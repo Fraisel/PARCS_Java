@@ -1,0 +1,26 @@
+import java.util.Scanner;
+import java.io.File;
+import parcs.*;
+
+public class Main {
+    public static void main(String[] args) throws Exception {
+        task curtask = new task();
+        curtask.addJarFile("Algo.jar");
+
+        Scanner sc = new Scanner(new File(curtask.findFile("input")));
+        int a = sc.nextInt();
+        int b = sc.nextInt();
+
+        AMInfo info = new AMInfo(curtask, null);
+
+        point p = info.createPoint();
+        channel c = p.createChannel();
+        p.execute("Algo");
+        c.write(a);
+        c.write(b);
+
+        System.out.println("Waiting for result...");
+        System.out.println("Result: " + c.readInt());
+        curtask.end();
+    }
+}
