@@ -19,29 +19,29 @@ public class Main {
 
         long startTime = System.nanoTime();
 
-//        List<channel> channels = new ArrayList<>();
-//
-//        for (int i = a; i <= b; i += step) {
-//            point p = info.createPoint();
-//            channel c = p.createChannel();
-//            p.execute("Square");
-//            c.write(i);
-//            c.write(i + step - 1);
-//            channels.add(c);
-//        }
-//
-//        int sum = 0;
-//        for (channel c: channels) {
-//            sum += c.readInt();
-//        }
+        List<channel> channels = new ArrayList<>();
 
-        point p = info.createPoint();
-        channel c = p.createChannel();
-        p.execute("Square");
-        c.write(a);
-        c.write(b);
-        int sum = c.readInt();
-        
+        for (int i = a; i <= b; i += step) {
+            point p = info.createPoint();
+            channel c = p.createChannel();
+            p.execute("Square");
+            c.write(i);
+            c.write(i + step - 1);
+            channels.add(c);
+        }
+
+        int sum = 0;
+        for (channel c : channels) {
+            sum += c.readInt();
+        }
+
+//        point p = info.createPoint();
+//        channel c = p.createChannel();
+//        p.execute("Square");
+//        c.write(a);
+//        c.write(b);
+//        int sum = c.readInt();
+//
         System.out.println("Waiting for result...");
         System.out.println("Result: " + sum);
 
