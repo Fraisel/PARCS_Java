@@ -15,7 +15,7 @@ public class Main {
         Scanner sc = new Scanner(new File(curtask.findFile("input")));
         int a = sc.nextInt();
         int b = sc.nextInt();
-        int step = (b - a - 1) / 10;
+        int step = (b - a + 1) / 10;
         
         List<channel> channels = new ArrayList<>();
 
