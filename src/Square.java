@@ -17,6 +17,6 @@ public class Square implements AM {
         }
 
         System.out.println(a + " - " + b + ". Build finished.");
-        info.parent.write(squares.size());
+        info.parent.write(a+b);
     }
 }
