@@ -1,6 +1,5 @@
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.IntStream;
 
 import parcs.*;
 
@@ -13,11 +12,14 @@ public class Square implements AM {
         List<Integer> squares = new ArrayList<>();
 
         for (int n = a; n <= b; n++) {
-            squares.add(n);
+            for (int k = 1; k < n / 2 + 1; k++) {
+                if (k * k == n) {
+                    squares.add(k);
+                }
+            }
         }
 
         System.out.println(a + " - " + b + ". Build finished.");
-        System.out.println(squares.size());
-        info.parent.write(a+b);
+        info.parent.write(squares.size());
     }
 }
