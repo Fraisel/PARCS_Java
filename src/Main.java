@@ -16,7 +16,9 @@ public class Main {
         int a = sc.nextInt();
         int b = sc.nextInt();
         int step = (b - a + 1) / 10;
-        
+
+        long startTime = System.nanoTime();
+
         List<channel> channels = new ArrayList<>();
 
         for (int i = a; i <= b; i += step) {
@@ -35,6 +37,10 @@ public class Main {
 
         System.out.println("Waiting for result...");
         System.out.println("Result: " + sum);
+
+        double totalTime = (double) (System.nanoTime() - startTime) / 1000000000;
+        System.out.println("Execution time: " + totalTime);
+        
         curtask.end();
     }
 }
