@@ -18,8 +18,8 @@ public class Main {
         point p = info.createPoint();
         channel c = p.createChannel();
         p.execute("Algo");
-        c.write(a);
-        c.write(b);
+//         c.write(a);
+//         c.write(b);
 
         System.out.println("Waiting for result...");
         System.out.println("Result: " + c.readInt());
