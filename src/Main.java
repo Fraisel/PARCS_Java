@@ -7,12 +7,14 @@ public class Main {
         task curtask = new task();
         curtask.addJarFile("Algo.jar");
 
+        AMInfo info = new AMInfo(curtask, null);
+
         Scanner sc = new Scanner(new File(curtask.findFile("input")));
         int a = sc.nextInt();
         int b = sc.nextInt();
-
-        AMInfo info = new AMInfo(curtask, null);
-
+        System.out.println(a);
+        System.out.println(b);
+        
         point p = info.createPoint();
         channel c = p.createChannel();
         p.execute("Algo");
