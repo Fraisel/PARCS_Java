@@ -13,11 +13,7 @@ public class Square implements AM {
         List<Integer> squares = new ArrayList<>();
 
         for (int n = a; n <= b; n++) {
-            for (int k = 1; k < n / 2 + 1; k++) {
-                if (k * k == n) {
-                    squares.add(k);
-                }
-            }
+            squares.add(n);
         }
 
         System.out.println(a + " - " + b + ". Build finished.");
