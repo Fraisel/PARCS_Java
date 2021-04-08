@@ -1,25 +1,33 @@
-import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.IntStream;
+import java.util.ArrayList;
 import parcs.*;
 
-public class Algo implements AM {
+public class DFS implements AM {
     public void run(AMInfo info) {
-//        int a = info.parent.readInt();
-//        int b = info.parent.readInt();
-//        System.out.println(a + " - " + b + ". Build started.");
-//
-//        List<Integer> squares = new ArrayList<>();
-//
-//        IntStream.range(a, b).forEachOrdered(n -> {
-//            IntStream.range(1, n / 2 + 1).forEachOrdered(k -> {
-//                if (k * k == n) {
-//                    squares.add(k);
-//                }
-//            });
-//        });
-//
-//        System.out.println(a + " - " + b + ". Build finished.");
-        info.parent.write(1);
+        Node n = (Node)info.parent.readObject();
+        System.out.println("[" + n.getId() + "] Build started.");
+
+        List<point> points = new ArrayList<>();
+        List<channel> chans = new ArrayList<>();
+        for (Node d: n.getDeps()) {
+            point p = info.createPoint();
+            channel c = p.createChannel();
+            p.execute("DFS");
+            c.write(d);
+            points.add(p);
+            chans.add(c);
+        }
+        long sum = n.getTime();
+        for (channel c: chans) {
+            sum += c.readLong();
+        }
+        try {
+            Thread.sleep(n.getTime());
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+            return;
+        }
+        System.out.println("[" + n.getId() + "] Build finished.");
+        info.parent.write(sum);
     }
 }
